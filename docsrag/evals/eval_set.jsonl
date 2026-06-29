@@ -1,0 +1,17 @@
+{"question": "How many days of paid vacation do employees get per year?", "expected_facts": ["30 days"], "relevant_sources": ["company-handbook.md"], "answerable": true}
+{"question": "How many unused vacation days can be carried into the next year?", "expected_facts": ["5 days", "manager approval for more"], "relevant_sources": ["company-handbook.md"], "answerable": true}
+{"question": "What are the core working hours?", "expected_facts": ["10:00 to 15:00 local time"], "relevant_sources": ["company-handbook.md"], "answerable": true}
+{"question": "How many days a week can I work remotely?", "expected_facts": ["up to three days per week"], "relevant_sources": ["company-handbook.md"], "answerable": true}
+{"question": "What is the home-office budget for a new joiner?", "expected_facts": ["8,000 SEK", "renewable every three years"], "relevant_sources": ["company-handbook.md", "onboarding.md"], "answerable": true}
+{"question": "What is the maximum payload of the Atlas-7?", "expected_facts": ["25 kg"], "relevant_sources": ["atlas7-product.md"], "answerable": true}
+{"question": "How long does the Atlas-7 battery last and how long does it take to charge?", "expected_facts": ["9 hours of operation", "80 minutes to charge"], "relevant_sources": ["atlas7-product.md"], "answerable": true}
+{"question": "How many Atlas-7 robots can a single Fleet Controller manage?", "expected_facts": ["up to 50 units"], "relevant_sources": ["atlas7-product.md", "onboarding.md"], "answerable": true}
+{"question": "How fast can the Atlas-7 move when a human is nearby?", "expected_facts": ["will not exceed 0.8 m/s when a human is within two metres"], "relevant_sources": ["atlas7-product.md"], "answerable": true}
+{"question": "What response time do premium support customers get?", "expected_facts": ["four-hour response time"], "relevant_sources": ["atlas7-product.md"], "answerable": true}
+{"question": "How do engineers authenticate to production systems?", "expected_facts": ["single sign-on", "hardware security key", "passwords alone are not sufficient"], "relevant_sources": ["security-policy.md"], "answerable": true}
+{"question": "How quickly must a security incident be reported?", "expected_facts": ["within one hour of discovery"], "relevant_sources": ["security-policy.md"], "answerable": true}
+{"question": "How are fleet software updates protected from tampering?", "expected_facts": ["updates are signed", "signature verified on the device", "robot refuses an invalid signature"], "relevant_sources": ["security-policy.md", "atlas7-product.md"], "answerable": true}
+{"question": "What does it take to deploy a change to production?", "expected_facts": ["pull request", "green CI", "one code-owner approval", "signed build / feature flag"], "relevant_sources": ["onboarding.md"], "answerable": true}
+{"question": "When do engineers join the on-call rotation and how fast must they acknowledge alerts?", "expected_facts": ["after three months", "acknowledge within 15 minutes"], "relevant_sources": ["onboarding.md"], "answerable": true}
+{"question": "What is the price of the Atlas-7 robot?", "expected_facts": ["the documents do not state a price"], "relevant_sources": [], "answerable": false}
+{"question": "Does Northwind Robotics offer a pension plan?", "expected_facts": ["the documents do not mention a pension plan"], "relevant_sources": [], "answerable": false}
