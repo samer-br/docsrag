@@ -25,11 +25,13 @@ point `DATA_DIR` at your own documents and re-run.
 | Latency p50 / p95 | end-to-end per `make eval` run |
 
 ```bash
-make ingest && make eval        # writes evals/results.md and results.json
+make ingest              # build the index (local embeddings, no API key)
+make retrieval-eval      # context precision / recall / MRR — no API key, no cost
+make eval                # adds LLM-judged faithfulness (needs a generation key)
 ```
 
-Retrieval metrics run with no API key (`python -m evals.retrieval_only`);
-faithfulness, fact coverage, and abstention need a generation key.
+The retrieval metrics need no API key at all; only the optional faithfulness,
+fact-coverage, and abstention scores call a generation model.
 
 ##  Architecture
 
@@ -91,22 +93,28 @@ Results are written to `evals/results.md` and `evals/results.json`.
 
 Python · FastAPI · sentence-transformers · NumPy · Anthropic / OpenAI · Streamlit · Docker
 
-##  Run locally
+## Run locally
+
+Requires **Python 3.11 or 3.12** — the embedding model depends on PyTorch, which
+does not yet publish wheels for 3.13+. The bundled `.python-version` selects 3.12
+automatically under pyenv; otherwise create the venv with an explicit 3.12
+(`python3.12 -m venv .venv`).
 
 ```bash
 # 1. install
 make install                 # or: pip install -r requirements.txt
 
-# 2. configure
-cp .env.example .env         # add your ANTHROPIC_API_KEY
+# 2. build the index over the sample docs (or your own — set DATA_DIR)
+make ingest                  # local embeddings, no API key needed
 
-# 3. build the index over the sample docs (or your own — set DATA_DIR)
-make ingest
+# 3. measure retrieval quality — no API key, no cost
+make retrieval-eval
 
-# 4a. serve the API
-make serve                   # http://localhost:8000/docs
-# 4b. or the chat UI
-make ui                      # http://localhost:8501
+# 4. (optional) add a key for generation and the full eval
+cp .env.example .env         # then set ANTHROPIC_API_KEY
+make eval                    # LLM-judged faithfulness
+make serve                   # http://localhost:8000/docs  — answer questions
+make ui                      # http://localhost:8501       — chat UI
 ```
 
 Ask the API a question:
@@ -122,7 +130,7 @@ With Docker:
 ANTHROPIC_API_KEY=sk-... docker compose up --build
 ```
 
-## 📁 Layout
+## Layout
 
 ```
 app/        ingestion, chunking, embeddings, vector store, graph, RAG, FastAPI
