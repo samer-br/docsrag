@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+
+# Environment
+.env
+
+# Index / storage artifacts
+storage/
+*.npz
+
+# Eval outputs are committed on purpose (evals/results.md), but ignore raw dumps
+evals/_runs/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
